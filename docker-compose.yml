@@ -1,36 +1,35 @@
+version: '3.7'
+
 services:
   ghost:
     image: ghost:3
     depends_on:
       - db
     ports:
-      - 80:80
-      - 443:443
+      - 80:2368
     restart: always
     volumes:
-      - ghost_data: ./ghost:/var/www/ghost
+      - ./ghost:/var/www/ghost
     environment:
       database__client: mysql
       database__connection__host: db:3306
-      database__connection__user: ${DB_USER}
-      database__connection__password: ${DB_PASSWORD}
+      database__connection__user: ghost
+      database__connection__password: '${DB_PASSWORD}'
       database__connection__database: ghost
     networks:
       - ghostsite
+
   db:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: true
+      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
       MYSQL_DATABASE: ghost
       MYSQL_USER: ghost
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
     volumes:
-      - db_data: ./mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     networks:
       - ghostsite
 networks:
-  - ghostsite
-volumes:
-  db_data:
-  ghost_data:
+  ghostsite:
