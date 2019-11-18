@@ -14,7 +14,7 @@ services:
       database__client: mysql
       database__connection__host: db:3306
       database__connection__user: ghost
-      database__connection__password: '${DB_PASSWORD}'
+      database__connection__password: ${DB_PASSWORD}
       database__connection__database: ghost
     networks:
       - ghostsite
@@ -26,7 +26,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: 'true'
       MYSQL_DATABASE: ghost
       MYSQL_USER: ghost
-      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./mysql:/var/lib/mysql
     networks:
