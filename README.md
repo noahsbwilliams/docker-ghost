@@ -1,3 +1,1 @@
-# docker-ghost
-
-Simple utility repo for deploying Ghost with docker 
+# Simple reference repo for deploying Ghost with Docker
