@@ -6,10 +6,10 @@ services:
     depends_on:
       - db
     ports:
-      - 80:2368
+      - 8080:2368
     restart: always
     volumes:
-      - ./ghost:/var/www/ghost
+      - ./ghost:/var/lib/ghost
     environment:
       database__client: mysql
       database__connection__host: db:3306
