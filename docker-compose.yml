@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3'
 
 services:
   ghost:
@@ -6,13 +6,13 @@ services:
     depends_on:
       - db
     ports:
-      - 3050:2368
+      - 2368:2368
     restart: always
     volumes:
-      - ./ghost:/var/lib/ghost/content
+      - ./content:/var/lib/ghost/content
     environment:
       database__client: mysql
-      database__connection__host: db:3306
+      database__connection__host: db
       database__connection__user: ghost
       database__connection__password: ${DB_PASSWORD}
       database__connection__database: ghost
