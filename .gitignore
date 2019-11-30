@@ -81,3 +81,5 @@ mysql/
 ghost/
 
 content/
+
+letsencrypt
