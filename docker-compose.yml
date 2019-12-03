@@ -31,5 +31,17 @@ services:
       - ./mysql:/var/lib/mysql
     networks:
       - ghostsite
+
+  reverse-proxy:
+    image: nginx:latest
+    restart: always
+    environment:
+    ports:
+      - 80:80
+      - 443:443
+    volumes: ./nginx:/etc/nginx/
+    networks:
+      - ghostsite
+
 networks:
   ghostsite:
