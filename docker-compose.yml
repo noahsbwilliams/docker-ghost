@@ -5,8 +5,8 @@ services:
     image: ghost:3
     depends_on:
       - db
-    #    ports:
-    #     - 2368:2368
+    ports:
+      - 2368:2368
     restart: always
     volumes:
       - ./content:/var/lib/ghost/content
@@ -29,16 +29,6 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./mysql:/var/lib/mysql
-    networks:
-      - ghostsite
-
-  reverse-proxy:
-    image: nginx:latest
-    restart: always
-    ports:
-      - 8080:80
-    volumes:
-      - ./nginx:/etc/nginx
     networks:
       - ghostsite
 
